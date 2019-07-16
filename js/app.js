@@ -2,11 +2,11 @@ const darkSkyAPIKey = '2180450fb6c595540f84351dfaa20450';
 const mapQuestAPIKey = 'db5wGqWH4xQFSlu6TGvorQMoRG8daxn5';
 const ipapiAPIKey = '6221dfe254de5dc154060805d2ababcc';
 
-const ipEndpoint = `http://api.ipapi.com/47.21.232.94?access_key=${ipapiAPIKey}&format=1`;
+const ipEndpoint = `https://api.ipapi.com/47.21.232.94?access_key=${ipapiAPIKey}&format=1`;
 
 // GET IP ADDRESS
 $.ajax({
-	url: 'http://api.ipify.org?format=json'
+	url: 'https://api.ipify.org?format=json'
 }).then(data => {
 	console.log(`IP address is: ${data.ip}`);
 });
