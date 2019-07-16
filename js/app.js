@@ -1,41 +1,19 @@
-// console.log(stops);
+const apikey = '2180450fb6c595540f84351dfaa20450';
+const lat = '41.042950';
+const long = '-73.532360';
+const time = Math.round(new Date().getTime() / 1000); // get unix time
+// console.log(time);
+const endpoint = `https://api.darksky.net/forecast/${apikey}/${lat},${long},${time}?exclude=currently,flags,minutely,daily,alerts`;
 
-// const printStops = (stopObject, index) => {
-// 	console.log(stopObject.stop_name);
-// };
+// console.log(endpoint);
 
-// stops.forEach(printStops);
+// const data = $.ajax({
+// 	url: endpoint
+// });
 
-//HARDCODE STOPS FOR TESTING
-const westport = 134; // Westport stop_id
-const grandcentral = 1; // Grand Central stop_id
-
-let westportStops = stop_times.filter(obj => {
-	return obj.stop_id === westport;
+$.ajax({
+	url: endpoint,
+	dataType: 'jsonp' // NEED TO SPECIFY THIS FOR IT TO WORK
+}).then(data => {
+	console.log(data);
 });
-
-let grandCentralStops = stop_times.filter(obj => {
-	return obj.stop_id === grandcentral;
-});
-
-const tripsBetweenGrandCentralAndWestport = () => {
-	const trips = [];
-	// for (let i = 0; i < westportStops.length; i++) {
-	// 	let foundInGrandCentral = false;
-	// 	while (!foundInGrandCentral) {
-	// 		let j = 0;
-	// 		console.log(`Grand Central Trip ID: ${grandCentralStops[j].trip_id}`);
-	// 		console.log(`Westport Trip ID: ${westportStops[j].trip_id}`);
-	// 		if (grandCentralStops[j].trip_id === westportStops[i].trip_id) {
-	// 			trips.push(grandCentralStops[j].trip_id);
-	// 			foundInGrandCentral = true;
-	// 		}
-	// 		j++;
-	// 	}
-	// }
-	console.log(trips);
-};
-
-// tripsBetweenGrandCentralAndWestport();
-
-// console.log(westportStops);
