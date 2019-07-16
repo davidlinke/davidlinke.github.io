@@ -23,7 +23,7 @@ $('#zipCodeSubmit').on('click', () => {
 
 // GET LAT & LNG & TOWN NAME FROM ZIP CODE
 const getLatLongAndTown = zipcode => {
-	const mapQuestEndpoint = `http://open.mapquestapi.com/geocoding/v1/address?key=${mapQuestAPIKey}&location=${zipcode} United States`;
+	const mapQuestEndpoint = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapQuestAPIKey}&location=${zipcode} United States`;
 
 	$.ajax({
 		url: mapQuestEndpoint
