@@ -4,7 +4,7 @@
 
 //=================================================
 // updateZipCode()
-// Gets the IP address of the user
+// Sets zip code to found one if it exists
 //=================================================
 const updateZipCode = zipcode => {
 	if (zipcode !== null) {
@@ -18,15 +18,18 @@ const updateZipCode = zipcode => {
 // Displays page loading state
 //=================================================
 const pageLoad = () => {
+	const $cloudDiv = $('<div>').attr('id', 'cloudDiv');
+	$('#content').append($cloudDiv);
 	const $clouds = $('<object>')
 		.attr('type', 'image/svg+xml')
 		.attr('data', 'clouds.svg')
+		.attr('id', 'clouds')
 		.addClass('loading');
 	const $h2 = $('<h2>')
-		.text('Grabbing your location.')
+		.text('Grabbing your location...')
 		.addClass('loading');
-	$('#content').append($clouds);
-	$('#content').append($h2);
+	$cloudDiv.append($clouds);
+	$cloudDiv.append($h2);
 };
 
 //=================================================
