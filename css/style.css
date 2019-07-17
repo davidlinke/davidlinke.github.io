@@ -4,6 +4,11 @@
 	font-family: 'EB Garamond', serif;
 }
 
+#main {
+	margin: 5%;
+	background-color: #fcf9f4;
+}
+
 input {
 	cursor: pointer;
 }
@@ -11,16 +16,72 @@ input {
 a {
 	text-decoration: none;
 	cursor: pointer;
+	color: #baa683;
 }
 
 a:visited {
-	color: inherit;
+	/* color: inherit; */
+	color: #baa683;
 }
 
 h1 {
 	text-align: center;
+	color: #8191b8;
 }
 
 form p {
 	display: inline-block;
+}
+
+#handle,
+#left,
+#right,
+#middle {
+	stroke: #bba683;
+	stroke-width: 1px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-miterlimit: 10;
+}
+
+#left,
+#right,
+#middle {
+	fill: white;
+}
+
+#handle {
+	fill: none;
+}
+
+#right,
+#left,
+#middle {
+	animation: umbrellaAnimation 1s linear 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes umbrellaAnimation {
+	0% {
+		transform-origin: 32px 10px;
+	}
+	100% {
+		transform-origin: 32px 10px;
+		transform: scaleY(1.5) scaleX(0.25);
+	}
+}
+
+@keyframes umbrellaAnimation {
+	0% {
+		transform-origin: 32px 10px;
+		transform: scaleY(1.5) scaleX(0.25);
+	}
+	100% {
+		transform-origin: 32px 10px;
+	}
+}
+
+#umbrella {
+	width: 10%;
+	display: block;
 }
