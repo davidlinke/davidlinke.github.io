@@ -25,14 +25,14 @@ const addWeatherDataToPage = (
 
 	console.log('function running');
 
-	const $morningh5 = $('<h5>').text(phrasing('morning', morningChance));
-	$('#morning').append($morningh5);
+	const $morningH5 = $('<h5>').text(phrasing('morning', morningChance));
+	$('#morning').append($morningH5);
 
-	const $afternoonh5 = $('<h5>').text(phrasing('afternoon', afternoonChance));
-	$('#afternoon').append($afternoonh5);
+	const $afternoonH5 = $('<h5>').text(phrasing('afternoon', afternoonChance));
+	$('#afternoon').append($afternoonH5);
 
-	const $eveningh5 = $('<h5>').text(phrasing('evening', eveningChance));
-	$('#evening').append($eveningh5);
+	const $eveningH5 = $('<h5>').text(phrasing('evening', eveningChance));
+	$('#evening').append($eveningH5);
 };
 
 //=================================================
@@ -41,12 +41,19 @@ const addWeatherDataToPage = (
 //=================================================
 const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 	const $status = $('<h3>');
+	const $umbrella = $('<object>')
+		.attr('type', 'image/svg+xml')
+		.attr('data', 'umbrella.svg')
+		.attr('id', 'umbrella');
+
 	if (morningChance > 0.5 || afternoonChance > 0.5 || eveningChance > 0.5) {
 		if (town !== '') {
 			$status.text(`Yes, definitely grab your umbrella in ${town} today!`);
 		} else {
 			$status.text(`Yes, definitely grab your umbrella today!`);
 		}
+		$('.top').css('animation', 'umbrellaAnimationReverse 1.5s ease-in-out 1');
+		$('.top').css('display', 'none');
 	} else if (
 		morningChance > 0.2 ||
 		afternoonChance > 0.2 ||
@@ -69,5 +76,6 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 		}
 	}
 
+	$('#results').prepend($umbrella);
 	$('#results').prepend($status);
 };

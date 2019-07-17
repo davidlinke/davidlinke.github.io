@@ -39,6 +39,10 @@ h2 {
 	font-weight: 400;
 }
 
+h3 {
+	display: inline-block;
+}
+
 form p {
 	display: inline-block;
 }
@@ -58,7 +62,8 @@ form p {
 
 .top {
 	fill: white;
-	animation: umbrellaAnimation 1s linear 1;
+	animation: umbrellaAnimation 1.5s ease-in-out 1;
+	/* Stop animation on last frame */
 	animation-fill-mode: forwards;
 }
 
@@ -95,8 +100,8 @@ form p {
 }
 
 #umbrella {
-	width: 20%;
-	display: block;
+	width: 10%;
+	display: inline-block;
 }
 
 #cloudDiv {
