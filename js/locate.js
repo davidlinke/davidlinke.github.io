@@ -28,6 +28,7 @@ const getZipFromIP = ipaddress => {
 		console.log(`Zip code from IP address is: ${data.zip}`);
 		// Unload loading animation and update zip code in UI. Timeout for demo purposes only to show off animation.
 		setTimeout(pageUnload, 1000);
+		setTimeout(displayInput, 1000);
 		setTimeout(updateZipCode, 1000, data.zip);
 	});
 };

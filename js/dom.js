@@ -39,3 +39,74 @@ const pageLoad = () => {
 const pageUnload = () => {
 	$('.loading').remove();
 };
+
+//=================================================
+// displayInput()
+// Displays zip code input form
+//=================================================
+const displayInput = () => {
+	const $form = $('<form>').attr('onsubmit', 'return false');
+	$('#content').append($form);
+
+	const $label = $('<p>').text('Zip Code');
+	$form.append($label);
+
+	const $input = $('<input>')
+		.attr('type', 'text')
+		.attr('id', 'zipCodeInput');
+	$form.append($input);
+
+	const $submit = $('<input>')
+		.attr('type', 'submit')
+		.attr('id', 'zipCodeSubmit')
+		.attr('value', 'Get Weather');
+	$form.append($submit);
+
+	// Start listener on button
+	zipCodeListener();
+};
+
+//=================================================
+// displayResults()
+// Displays results from weather lookup
+//=================================================
+const displayResults = () => {
+	const $resultsDiv = $('<div>').attr('id', 'results');
+	$('#content').append($resultsDiv);
+
+	const $morning = $('<div>')
+		.attr('id', 'morning')
+		.addClass('weatherSection');
+	const $morningH4 = $('<h4>').text('Morning');
+	$($morning).append($morningH4);
+
+	const $afternoon = $('<div>')
+		.attr('id', 'afternoon')
+		.addClass('weatherSection');
+	const $afternoonH4 = $('<h4>').text('Afternoon');
+	$afternoon.append($afternoonH4);
+
+	const $evening = $('<div>')
+		.attr('id', 'evening')
+		.addClass('weatherSection');
+	const $eveningH4 = $('<h4>').text('Evening');
+	$evening.append($eveningH4);
+
+	$($resultsDiv).prepend($morning, $afternoon, $evening);
+};
+
+//=================================================
+// zipCodeListener()
+// Handles user hitting submit on zip code button
+//=================================================
+const zipCodeListener = () => {
+	$('#zipCodeSubmit').on('click', () => {
+		// Clear Existing Info
+		$('#results').remove();
+
+		let zipcode = $('#zipCodeInput').val();
+		displayResults();
+		// console.log(zipcode);
+		getLocationInfo(zipcode);
+	});
+};

@@ -2,21 +2,8 @@
 // app.js
 //=================================================
 
-//=================================================
-// Get users IP address
-//=================================================
 pageLoad(); // Show loading state
-getIP();
-
-// GET ZIP CODE
-$('#zipCodeSubmit').on('click', () => {
-	let zipcode = $('#zipCodeInput').val();
-	// console.log(zipcode);
-	getLocationInfo(zipcode);
-
-	// CLEAR EXISTING INFO
-	// $('#results').empty();
-});
+getIP(); // Get IP address
 
 //=================================================
 // addWeatherDataToPage(morningChance, afternoonChance, eveningChance)
@@ -36,14 +23,16 @@ const addWeatherDataToPage = (
 		}
 	};
 
-	const $morning = $('<h5>').text(phrasing('morning', morningChance));
-	$('#morning').append($morning);
+	console.log('function running');
 
-	const $afternoon = $('<h5>').text(phrasing('afternoon', afternoonChance));
-	$('#afternoon').append($afternoon);
+	const $morningh5 = $('<h5>').text(phrasing('morning', morningChance));
+	$('#morning').append($morningh5);
 
-	const $evening = $('<h5>').text(phrasing('evening', eveningChance));
-	$('#evening').append($evening);
+	const $afternoonh5 = $('<h5>').text(phrasing('afternoon', afternoonChance));
+	$('#afternoon').append($afternoonh5);
+
+	const $eveningh5 = $('<h5>').text(phrasing('evening', eveningChance));
+	$('#evening').append($eveningh5);
 };
 
 //=================================================
