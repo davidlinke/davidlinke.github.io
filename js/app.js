@@ -5,6 +5,7 @@
 //=================================================
 // Get users IP address
 //=================================================
+pageLoad(); // Show loading state
 getIP();
 
 // GET ZIP CODE
