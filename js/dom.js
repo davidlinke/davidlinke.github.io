@@ -93,6 +93,8 @@ const displayResults = () => {
 	$evening.append($eveningH4);
 
 	$($resultsDiv).prepend($morning, $afternoon, $evening);
+
+	$resultsDiv.addClass('animated zoomIn');
 };
 
 //=================================================

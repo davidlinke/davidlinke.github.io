@@ -10,6 +10,9 @@
 	padding: 5%;
 	background-color: #fcf9f4;
 	height: 80vh;
+	background-image: url('rain.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 input {
@@ -65,6 +68,7 @@ form p {
 	animation: umbrellaAnimation 1.5s ease-in-out 1;
 	/* Stop animation on last frame */
 	animation-fill-mode: forwards;
+	animation-play-state: paused;
 }
 
 @keyframes umbrellaAnimation {
