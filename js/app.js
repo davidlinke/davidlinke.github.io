@@ -6,6 +6,7 @@ pageLoad('Grabbing your location...'); // Show loading state
 getIP(); // Get IP address, start chain of functions
 
 const $radarButton = $('#viewRadar');
+const $radarSVG = $('#radar');
 const $radarModal = $('#radarModalOuter');
 const $radarCloseButton = $('#closeRadar');
 
@@ -14,11 +15,17 @@ $radarButton.on('click', () => {
 	$radarModal.css('display', 'block');
 });
 
-// $radarCloseButton.on('click', () => {
-// 	console.log('close radar button clicked');
-// 	$radarModal.css('display', 'none');
-// });
+$radarSVG.on('click', () => {
+	console.log('radar svg clicked');
+	$radarModal.css('display', 'block');
+});
 
+$radarCloseButton.on('click', () => {
+	console.log('close radar button clicked');
+	$radarModal.css('display', 'none');
+});
+
+// If clicking outside of the modal and not on the view radar button, close the modal
 $('body').on('click', event => {
 	console.log(event);
 	if (event.target.id != 'radarModalInner' && event.target.id != 'viewRadar') {
