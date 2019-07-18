@@ -94,7 +94,8 @@ form p {
 
 #handle,
 .top,
-.topOpen {
+.topOpen,
+.topRepeat {
 	stroke: #bba683;
 	stroke-width: 1px;
 	stroke-linecap: round;
@@ -120,22 +121,10 @@ form p {
 .topOpen {
 	animation-play-state: running;
 }
-
-/* @keyframes umbrellaAnimation {
-	0% {
-		transform-origin: 32px 10px;
-		-webkit-transform-origin: 32px 10px;
-		-ms-transform-origin: 32px 10px;
-	}
-	100% {
-		transform-origin: 32px 10px;
-		-webkit-transform-origin: 32px 10px;
-		-ms-transform-origin: 32px 10px;
-		transform: scaleY(1.5) scaleX(0.25);
-		-webkit-transform: scaleY(1.5) scaleX(0.25);
-		-ms-transform: scaleY(1.5) scaleX(0.25);
-	}
-} */
+.topRepeat {
+	fill: white;
+	animation: umbrellaRepeatingAnimation 3s ease-in-out infinite;
+}
 
 @keyframes umbrellaAnimationReverse {
 	0% {
@@ -153,10 +142,50 @@ form p {
 	}
 }
 
+@keyframes umbrellaRepeatingAnimation {
+	0% {
+		transform-origin: 32px 10px;
+		-webkit-transform-origin: 32px 10px;
+		-ms-transform-origin: 32px 10px;
+		transform: scaleY(1.5) scaleX(0.25);
+		-webkit-transform: scaleY(1.5) scaleX(0.25);
+		-ms-transform: scaleY(1.5) scaleX(0.25);
+	}
+	50% {
+		transform-origin: 32px 10px;
+		-webkit-transform-origin: 32px 10px;
+		-ms-transform-origin: 32px 10px;
+		transform: scaleY(1) scaleX(1);
+		-webkit-transform: scaleY(1) scaleX(1);
+		-ms-transform: scaleY(1) scaleX(1);
+	}
+	100% {
+		transform-origin: 32px 10px;
+		-webkit-transform-origin: 32px 10px;
+		-ms-transform-origin: 32px 10px;
+		transform: scaleY(1.5) scaleX(0.25);
+		-webkit-transform: scaleY(1.5) scaleX(0.25);
+		-ms-transform: scaleY(1.5) scaleX(0.25);
+	}
+}
+
 #umbrella {
 	width: 15%;
 	/* border: 1px solid red; */
 	display: inline-block;
+}
+
+.fallenUmbrella {
+	animation: umbrellaFallOver 1.5s ease-in-out 1;
+	/* Stop animation on last frame */
+	animation-fill-mode: forwards;
+}
+
+@keyframes umbrellaFallOver {
+	100% {
+		transform-origin: 55% 90%;
+		transform: rotate(90deg);
+	}
 }
 
 #cloudDiv {

@@ -121,6 +121,7 @@ const triggerWeatherLookup = () => {
 	// Clear Existing Info
 	$('#results').remove();
 	$('#main').removeClass('mainRain');
+	$('.uprightUmbrella').removeClass('fallenUmbrella');
 
 	let zipcode = $('#zipCodeInput').val();
 
@@ -142,6 +143,28 @@ const animateOnRain = () => {
 
 	// Toggle background rain on
 	$('#main').toggleClass('mainRain');
+};
+
+//=================================================
+// animateOnMaybeRain()
+// Animates page elements if rain is maybe predicted
+//=================================================
+const animateOnMaybeRain = () => {
+	// Swap umbrella graphic with one with class that opens
+	const $umbrellaRepeat = $('<object>')
+		.attr('type', 'image/svg+xml')
+		.attr('data', 'images/umbrellaRepeat.svg')
+		.attr('id', 'umbrella');
+	$('#umbrella').remove();
+	$('#mainInner').prepend($umbrellaRepeat);
+};
+
+//=================================================
+// animateOnNoRain()
+// Animates page elements if no rain is predicted
+//=================================================
+const animateOnNoRain = () => {
+	$('.uprightUmbrella').toggleClass('fallenUmbrella');
 };
 
 //=================================================
@@ -190,6 +213,7 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 		afternoonChance > 0.2 ||
 		eveningChance > 0.2
 	) {
+		animateOnMaybeRain();
 		if (town !== '') {
 			$status.text(`Maybe.`);
 			$subStatus.text(`Use your best judgement in ${town} today.`);
@@ -198,6 +222,7 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 			$subStatus.text(`Use your best judgement today.`);
 		}
 	} else {
+		animateOnNoRain();
 		if (town !== '') {
 			$status.text(`No!`);
 			$subStatus.text(`All clear today in ${town}.`);
