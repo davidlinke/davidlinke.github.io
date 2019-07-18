@@ -121,7 +121,15 @@ const triggerWeatherLookup = () => {
 	// Clear Existing Info
 	$('#results').remove();
 	$('#main').removeClass('mainRain');
-	$('.uprightUmbrella').removeClass('fallenUmbrella');
+	// $('.uprightUmbrella').removeClass('fallenUmbrella');
+	$('#umbrella').remove();
+	const $freshUmbrella = $('<object>')
+		.attr('type', 'image/svg+xml')
+		.attr('data', 'images/umbrella.svg')
+		.attr('id', 'umbrella')
+		.addClass('uprightUmbrella');
+	$('#umbrella').remove();
+	$('#mainInner').prepend($freshUmbrella);
 
 	let zipcode = $('#zipCodeInput').val();
 
