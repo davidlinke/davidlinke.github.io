@@ -243,3 +243,109 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 	$('#results').prepend($subStatus);
 	$('#results').prepend($status);
 };
+
+//=================================================
+// showRadar(latLngObject)
+// Generates and displays radar modal
+//=================================================
+const showRadar = (lat, lng) => {
+	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
+	const radarURL =
+		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
+
+	const $radar = $('<div>');
+
+	const $viewRadarButton = $('<button>')
+		.attr('type', 'button')
+		.attr('id', 'viewRadar')
+		.text('View Radar');
+
+	$radar.append($viewRadarButton);
+
+	const $radarSVG = $('<object>')
+		.attr('id', 'radarSVG')
+		.attr('type', 'image/svg+xml')
+		.attr('data', 'images/radar.svg');
+
+	$viewRadarButton.append($radarSVG);
+
+	// const $radarModalOuter = $('<div>').attr('id', 'radarModalOuter');
+
+	// $radar.append($radarModalOuter);
+
+	$radar.append($('#radarModalOuter'));
+
+	const $radarModalInner = $('<div>').attr('id', 'radarModalInner');
+
+	const $radarEmbed = $('<script>')
+		.attr('src', radarURL)
+		.attr('type', 'text/javascript');
+	$radarModalInner.append($radarEmbed);
+
+	// $radarModalInner.load(() => {
+	// 	$(this)
+	// 		.contents()
+	// 		.find('body')
+	// 		.append(
+	// 			'<scr' + `ipt type="text/javascript" src=${radarURL}></scr` + 'ipt>'
+	// 		);
+	// });
+
+	// const $script = document.createElement('script');
+	// $script.type = 'text/javascript';
+	// $script.src = radarURL;
+	// $radarModalInner.append($script);
+
+	// $radarModalOuter.append($radarModalInner);
+
+	const $closeRadarButton = $('<button>')
+		.attr('type', 'button')
+		.attr('id', 'closeRadar')
+		.text('Close Radar');
+
+	$radarModalInner.append($closeRadarButton);
+
+	$('#content').append($radar);
+
+	// Create button listeners
+	radarListeners();
+};
+
+//=================================================
+// radarListeners()
+// Starts event listeners for radar interactivity
+//=================================================
+const radarListeners = () => {
+	const $radarButton = $('#viewRadar');
+	// const $radarSVG = $('#radarSVG');
+	const $radarModal = $('#radarModalOuter');
+	const $radarCloseButton = $('#closeRadar');
+
+	$radarButton.on('click', () => {
+		console.log('radar button clicked');
+		$radarModal.css('display', 'block');
+	});
+
+	// $radarSVG.on('click', () => {
+	// 	console.log('radar svg clicked');
+	// 	$radarModal.css('display', 'block');
+	// });
+
+	// Need button for mobile users
+	$radarCloseButton.on('click', () => {
+		console.log('close radar button clicked');
+		$radarModal.css('display', 'none');
+	});
+
+	// If clicking outside of the modal and not on the view radar button, close the modal
+	$('body').on('click', event => {
+		console.log(event);
+		if (
+			event.target.id != 'radarModalInner' &&
+			event.target.id != 'viewRadar'
+		) {
+			console.log('clicked outside of radar');
+			$radarModal.css('display', 'none');
+		}
+	});
+};

@@ -88,4 +88,6 @@ const summarizePrecipitation = (darkSkyObject, town) => {
 		afternoonProbability,
 		eveningProbability
 	);
+
+	showRadar(darkSkyObject.latitude, darkSkyObject.longitude);
 };
