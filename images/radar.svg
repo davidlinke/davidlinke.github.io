@@ -1,5 +1,5 @@
 <?xml-stylesheet type="text/css" href="../css/style.css"?>
-<svg width="40px"  height="40px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-progress-pie">
+<svg width="37px"  height="37px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-progress-pie">
     <path fill="none" ng-attr-d="{{config.d}}" ng-attr-stroke="{{config.c1}}" ng-attr-stroke-width="{{config.w}}" d="M50 35A15 15 0 0 1 50 65A15 15 0 0 1 50 35" stroke="#bba683" stroke-width="30">
       <animate attributeName="stroke-dasharray" calcMode="spline" values="0 0 0 95;0 0 95 95;0 95 95 95" keyTimes="0;0.5;1" dur="4" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite"></animate>
     </path>

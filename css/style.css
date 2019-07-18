@@ -209,24 +209,42 @@ form p {
 	padding: 5%;
 }
 
-#zipForm input {
+#zipForm input, button {
 	margin: 0 1%;
 	box-sizing: border-box;
 	height: 2.5em;
 	padding: 0 2%;
 }
 
-#zipCodeInput {
+#zipCodeInput, button {
 	background-color: white;
 	border: none;
 	width: 100px;
 }
 
-#zipCodeSubmit {
+#viewRadar {
+	padding-left: 37px;
+	line-height: 37px;
+}
+button {
+	width: 180px;
+}
+
+#radar {
+	vertical-align: middle;
+}
+
+#zipCodeSubmit, button {
 	background-color: white;
 	border: 1px solid #bba683;
 	color: #bba683;
 	font-weight: 500;
+}
+
+#zipCodeSubmit:hover, button:hover {
+	background-color: #bba683;
+	border: 1px solid #bba683;
+	color: white;
 }
 
 #results {
@@ -270,9 +288,13 @@ h6 {
 }
 
 #radarModalOuter {
-	background-color: rgba(0, 0, 0, 0.4);
+	/* display: flex;
+	align-items: center;
+  	justify-content: center;
+  	text-align: center; */
+	/* background-color: rgba(0, 0, 0, 0.1); */
 	position: absolute;
-	margin: 0 auto;
+	/* margin: 0 auto; */
 	height: 100vh;
 	width: 100vw;
 	top: 0;
@@ -280,13 +302,21 @@ h6 {
 	right: 0;
 	bottom: 0;
 	z-index: 1;
+	display: none;
 }
 
 #radarModalInner {
+	/* position: relative;
 	width: 80%;
 	margin: 0 auto;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 0;
+	transform: translateY(50%); */
+	margin: auto;
+    position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	height: 500px;
+	width: 80%;
+}
 }
 
 @media (max-width: 600px) {
