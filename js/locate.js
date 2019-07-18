@@ -20,8 +20,21 @@ const getIP = () => {
 // getZipFromIP(ipaddress)
 // Gets the zip code from a users IP address
 //=================================================
+// const getZipFromIP = ipaddress => {
+// 	const ipEndpoint = `http://api.ipapi.com/${ipaddress}?access_key=${ipapiAPIKey}&format=1`;
+// 	$.ajax({
+// 		url: ipEndpoint
+// 	}).then(data => {
+// 		console.log(`Zip code from IP address is: ${data.zip}`);
+// 		// Unload loading animation and update zip code in UI. Timeout for demo purposes only to show off animation.
+// 		setTimeout(pageUnload, 1000);
+// 		setTimeout(displayInput, 1000);
+// 		setTimeout(updateZipCode, 1000, data.zip);
+// 	});
+// };
+
 const getZipFromIP = ipaddress => {
-	const ipEndpoint = `http://api.ipapi.com/${ipaddress}?access_key=${ipapiAPIKey}&format=1`;
+	const ipEndpoint = `http://ip-api.com/json/${ipaddress}`;
 	$.ajax({
 		url: ipEndpoint
 	}).then(data => {
