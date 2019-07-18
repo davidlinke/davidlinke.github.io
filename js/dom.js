@@ -14,10 +14,10 @@ const updateZipCode = zipcode => {
 };
 
 //=================================================
-// pageLoad()
+// pageLoad(loadingText)
 // Displays page loading state
 //=================================================
-const pageLoad = () => {
+const pageLoad = loadingText => {
 	const $cloudDiv = $('<div>').attr('id', 'cloudDiv');
 	$('#content').append($cloudDiv);
 	const $clouds = $('<object>')
@@ -26,7 +26,7 @@ const pageLoad = () => {
 		.attr('id', 'clouds')
 		.addClass('loading');
 	const $h2 = $('<h2>')
-		.text('Grabbing your location...')
+		.text(loadingText)
 		.addClass('loading');
 	$cloudDiv.append($clouds);
 	$cloudDiv.append($h2);
@@ -108,15 +108,22 @@ const displayResults = () => {
 //=================================================
 const zipCodeListener = () => {
 	$('#zipCodeSubmit').on('click', () => {
-		// Clear Existing Info
-		$('#results').remove();
-		$('#main').removeClass('mainRain');
-
-		let zipcode = $('#zipCodeInput').val();
-		displayResults();
-		// console.log(zipcode);
-		getLocationInfo(zipcode);
+		triggerWeatherLookup();
 	});
+};
+
+//=================================================
+// triggerWeatherLookup()
+// Triggers weather lookup and clears any existing weather info
+//=================================================
+const triggerWeatherLookup = () => {
+	// Clear Existing Info
+	$('#results').remove();
+	$('#main').removeClass('mainRain');
+
+	let zipcode = $('#zipCodeInput').val();
+
+	getLocationInfo(zipcode);
 };
 
 //=================================================
@@ -134,4 +141,71 @@ const animateOnRain = () => {
 
 	// Toggle background rain on
 	$('#main').toggleClass('mainRain');
+};
+
+//=================================================
+// addWeatherDataToPage(morningChance, afternoonChance, eveningChance)
+// Updates displayed weather info on page
+//=================================================
+const addWeatherDataToPage = (
+	morningChance,
+	afternoonChance,
+	eveningChance
+) => {
+	const $morningH5 = $('<h5>').text(`${Math.floor(morningChance * 100)}%`);
+	$('#morning').append($morningH5);
+	$('#morning').append($('<h6>').text('chance of rain'));
+
+	const $afternoonH5 = $('<h5>').text(`${Math.floor(afternoonChance * 100)}%`);
+	$('#afternoon').append($afternoonH5);
+	$('#afternoon').append($('<h6>').text('chance of rain'));
+
+	const $eveningH5 = $('<h5>').text(`${Math.floor(eveningChance * 100)}%`);
+	$('#evening').append($eveningH5);
+	$('#evening').append($('<h6>').text('chance of rain'));
+};
+
+//=================================================
+// mainStatus(morningChance, afternoonChance, eveningChance, town)
+// Updates displayed weather info on page
+//=================================================
+const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
+	const $status = $('<h3>').attr('id', 'mainStatus');
+	const $subStatus = $('<h3>').attr('id', 'subStatus');
+
+	if (morningChance > 0.5 || afternoonChance > 0.5 || eveningChance > 0.5) {
+		if (town !== '') {
+			$status.text(`Yes!`);
+			$subStatus.text(`Definitely grab your umbrella in ${town} today.`);
+		} else {
+			$status.text(`Yes!`);
+			$subStatus.text(`Definitely grab your umbrella today.`);
+		}
+
+		// Trigger rain animations
+		animateOnRain();
+	} else if (
+		morningChance > 0.2 ||
+		afternoonChance > 0.2 ||
+		eveningChance > 0.2
+	) {
+		if (town !== '') {
+			$status.text(`Maybe.`);
+			$subStatus.text(`Use your best judgement in ${town} today.`);
+		} else {
+			$status.text(`Maybe.`);
+			$subStatus.text(`Use your best judgement today.`);
+		}
+	} else {
+		if (town !== '') {
+			$status.text(`No!`);
+			$subStatus.text(`All clear today in ${town}.`);
+		} else {
+			$status.text(`No!`);
+			$subStatus.text(`All clear today.`);
+		}
+	}
+
+	$('#results').prepend($subStatus);
+	$('#results').prepend($status);
 };

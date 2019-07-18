@@ -17,26 +17,15 @@ const getWeatherData = (latLngObject, town) => {
 	// console.log(`lng is ${lng} and type ${typeof lng}`);
 
 	// const currentTime = Math.round(new Date().getTime() / 1000); // get unix time
-	// const tomorrowsTime = currentTime + 86400;
 
 	// const darkSkyEndpoint = `https://api.darksky.net/forecast/${darkSkyAPIKey}/${lat},${lng},${currentTime}?exclude=currently,flags,minutely,daily,alerts`;
 
-	// const darkSkyEndpointTomorrow = `https://api.darksky.net/forecast/${darkSkyAPIKey}/${lat},${lng},${tomorrowsTime}?exclude=currently,flags,minutely,daily,alerts`;
-
-	// GET WEATHER DATA FOR TODAY
 	// $.ajax({
 	// 	url: darkSkyEndpoint,
 	// 	dataType: 'jsonp' // NEED TO SPECIFY THIS FOR IT TO WORK
 	// }).then(data => {
 	// 	console.log(data);
-	// });
-
-	// GET WEATHER DATA FOR TOMORROW
-	// $.ajax({
-	// 	url: darkSkyEndpointTomorrow,
-	// 	dataType: 'jsonp'
-	// }).then(data => {
-	// 	console.log(data);
+	// summarizePrecipitation(data, town);
 	// });
 };
 
@@ -81,6 +70,8 @@ const summarizePrecipitation = (darkSkyObject, town) => {
 	console.log(
 		`Morning chance of rain is ${morningProbability}. Afternoon chance of rain is ${afternoonProbability}. Evening chance of rain is ${eveningProbability}`
 	);
+
+	displayResults();
 
 	mainStatus(
 		morningProbability,

@@ -14,7 +14,6 @@
 	margin: 5%;
 	background-color: #fcf9f4;
 	background-repeat: repeat;
-	/* animation: fadeInRain 4s linear 1, rain 5s linear infinite; */
 	animation: rain 5s linear infinite;
 	-webkit-animation: rain 5s linear infinite;
 	-moz-animation: rain 5s linear infinite;
@@ -47,17 +46,6 @@
 	}
 }
 
-/* @keyframes fadeInRain {
-	0% {
-		background-image: linear-gradient(rgba(252, 249, 244, 1)),
-			url('../images/rain.png');
-	}
-	100% {
-		background-image: linear-gradient(rgba(252, 249, 244, 0)),
-			url('../images/rain.png');
-	}
-} */
-
 input {
 	cursor: pointer;
 }
@@ -69,7 +57,6 @@ a {
 }
 
 a:visited {
-	/* color: inherit; */
 	color: #baa683;
 }
 
@@ -134,7 +121,7 @@ form p {
 	animation-play-state: running;
 }
 
-@keyframes umbrellaAnimation {
+/* @keyframes umbrellaAnimation {
 	0% {
 		transform-origin: 32px 10px;
 		-webkit-transform-origin: 32px 10px;
@@ -148,7 +135,7 @@ form p {
 		-webkit-transform: scaleY(1.5) scaleX(0.25);
 		-ms-transform: scaleY(1.5) scaleX(0.25);
 	}
-}
+} */
 
 @keyframes umbrellaAnimationReverse {
 	0% {
@@ -179,8 +166,6 @@ form p {
 }
 
 #clouds {
-	/* background-color: red; */
-	/* border: 1px solid red; */
 	margin: -30px 0 -50px 0;
 }
 
