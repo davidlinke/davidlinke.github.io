@@ -11,8 +11,8 @@ const getWeatherData = (latLngObject, town) => {
 	const lng = latLngObject.lng;
 
 	// summarizePrecipitation(stamfordData, town);
-	summarizePrecipitation(stamfordDataMaybeRain, town);
-	// summarizePrecipitation(hawaiiData, town);
+	// summarizePrecipitation(stamfordDataMaybeRain, town);
+	summarizePrecipitation(hawaiiData, town);
 
 	// console.log(`lat is ${lat} and type ${typeof lat}`);
 	// console.log(`lng is ${lng} and type ${typeof lng}`);

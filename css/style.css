@@ -278,4 +278,8 @@ h6 {
 		margin: 2% 0;
 		width: auto;
 	}
+
+	#umbrella {
+		width: 30%;
+	}
 }

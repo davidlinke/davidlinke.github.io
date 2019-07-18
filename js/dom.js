@@ -62,7 +62,7 @@ const displayInput = () => {
 	const $submit = $('<input>')
 		.attr('type', 'submit')
 		.attr('id', 'zipCodeSubmit')
-		.attr('value', 'Get Weather');
+		.attr('value', 'Check Weather');
 	$form.append($submit);
 
 	// Start listener on button
@@ -216,10 +216,10 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 		animateOnMaybeRain();
 		if (town !== '') {
 			$status.text(`Maybe.`);
-			$subStatus.text(`Use your best judgement in ${town} today.`);
+			$subStatus.text(`Use your best judgement in ${town}.`);
 		} else {
 			$status.text(`Maybe.`);
-			$subStatus.text(`Use your best judgement today.`);
+			$subStatus.text(`Use your best judgement.`);
 		}
 	} else {
 		animateOnNoRain();
