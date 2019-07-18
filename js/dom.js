@@ -45,11 +45,13 @@ const pageUnload = () => {
 // Displays zip code input form
 //=================================================
 const displayInput = () => {
-	const $form = $('<form>').attr('onsubmit', 'return false');
+	const $form = $('<form>')
+		.attr('onsubmit', 'return false')
+		.attr('id', 'zipForm');
 	$('#content').append($form);
 
-	const $label = $('<p>').text('Zip Code');
-	$form.append($label);
+	// const $label = $('<p>').text('Zip Code');
+	// $form.append($label);
 
 	const $input = $('<input>')
 		.attr('type', 'text')

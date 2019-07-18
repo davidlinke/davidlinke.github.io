@@ -189,3 +189,25 @@ form p {
 #content {
 	padding: 5%;
 }
+
+#zipForm input {
+	margin: 0 1%;
+	box-sizing: border-box;
+	height: 2.5em;
+	padding: 0 2%;
+}
+
+#zipCodeInput {
+	background-color: white;
+	border: none;
+	width: 100px;
+}
+
+#zipCodeSubmit {
+	/* background-color: #8191b8; */
+	background-color: white;
+	border: 1px solid #bba683;
+	/* background: none; */
+	color: #bba683;
+	font-weight: 500;
+}
