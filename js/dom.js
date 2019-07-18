@@ -22,7 +22,7 @@ const pageLoad = () => {
 	$('#content').append($cloudDiv);
 	const $clouds = $('<object>')
 		.attr('type', 'image/svg+xml')
-		.attr('data', 'clouds.svg')
+		.attr('data', 'images/clouds.svg')
 		.attr('id', 'clouds')
 		.addClass('loading');
 	const $h2 = $('<h2>')

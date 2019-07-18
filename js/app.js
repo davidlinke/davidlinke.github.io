@@ -41,10 +41,10 @@ const addWeatherDataToPage = (
 //=================================================
 const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 	const $status = $('<h3>');
-	const $umbrella = $('<object>')
-		.attr('type', 'image/svg+xml')
-		.attr('data', 'umbrella.svg')
-		.attr('id', 'umbrella');
+	// const $umbrella = $('<object>')
+	// 	.attr('type', 'image/svg+xml')
+	// 	.attr('data', 'images/umbrella.svg')
+	// 	.attr('id', 'umbrella');
 
 	if (morningChance > 0.5 || afternoonChance > 0.5 || eveningChance > 0.5) {
 		if (town !== '') {
@@ -76,6 +76,6 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 		}
 	}
 
-	$('#results').prepend($umbrella);
+	// $('#results').prepend($umbrella);
 	$('#results').prepend($status);
 };
