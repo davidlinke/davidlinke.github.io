@@ -37,7 +37,7 @@ const pageLoad = () => {
 // Removes page loading state
 //=================================================
 const pageUnload = () => {
-	$('.loading').remove();
+	$('#cloudDiv').remove();
 };
 
 //=================================================
@@ -105,10 +105,28 @@ const zipCodeListener = () => {
 	$('#zipCodeSubmit').on('click', () => {
 		// Clear Existing Info
 		$('#results').remove();
+		$('#main').removeClass('mainRain');
 
 		let zipcode = $('#zipCodeInput').val();
 		displayResults();
 		// console.log(zipcode);
 		getLocationInfo(zipcode);
 	});
+};
+
+//=================================================
+// animateOnRain()
+// Animates page elements if rain is predicted
+//=================================================
+const animateOnRain = () => {
+	// Swap umbrella graphic with one with class that opens
+	const $umbrellaOpen = $('<object>')
+		.attr('type', 'image/svg+xml')
+		.attr('data', 'images/umbrellaOpen.svg')
+		.attr('id', 'umbrella');
+	$('#umbrella').remove();
+	$('#mainInner').prepend($umbrellaOpen);
+
+	// Toggle background rain on
+	$('#main').toggleClass('mainRain');
 };

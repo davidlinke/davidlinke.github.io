@@ -23,8 +23,6 @@ const addWeatherDataToPage = (
 		}
 	};
 
-	console.log('function running');
-
 	const $morningH5 = $('<h5>').text(phrasing('morning', morningChance));
 	$('#morning').append($morningH5);
 
@@ -54,6 +52,7 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 		}
 		$('.top').css('animation', 'umbrellaAnimationReverse 1.5s ease-in-out 1');
 		$('.top').css('display', 'none');
+		animateOnRain();
 	} else if (
 		morningChance > 0.2 ||
 		afternoonChance > 0.2 ||
