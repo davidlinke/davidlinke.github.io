@@ -34,11 +34,6 @@
 	text-align: center;
 }
 
-#main,
-#mainInner {
-	/* height: 100%; */
-}
-
 @keyframes rain {
 	0% {
 		background-image: url('../images/rain.png');
@@ -84,6 +79,7 @@ h1 {
 	font-size: 2.5em;
 	padding: 0;
 	margin: 0;
+	font-weight: 700;
 }
 
 h2 {
@@ -93,7 +89,16 @@ h2 {
 }
 
 h3 {
-	display: inline-block;
+	font-size: 3.5em;
+	font-weight: 500;
+	margin: 0;
+}
+
+#subStatus {
+	font-size: 1.3em;
+	font-weight: 400;
+	opacity: 0.6;
+	margin-bottom: 5%;
 }
 
 form p {
@@ -204,10 +209,59 @@ form p {
 }
 
 #zipCodeSubmit {
-	/* background-color: #8191b8; */
 	background-color: white;
 	border: 1px solid #bba683;
-	/* background: none; */
 	color: #bba683;
 	font-weight: 500;
+}
+
+#results {
+	margin: 4% 0;
+	padding: 3%;
+}
+
+#timeOfDay {
+	margin: 3% 0;
+	display: flex;
+	align-items: stretch;
+	align-content: stretch;
+	justify-content: space-between;
+}
+
+.weatherSection {
+	border: 1px solid #bba683;
+	padding: 2%;
+	margin: 0 1%;
+	width: 25ch;
+}
+
+h4 {
+	margin: 5% 0;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+h5 {
+	margin: 10% 0 0 0;
+	font-size: 2em;
+	font-weight: 600;
+}
+
+h6 {
+	margin: 0.5% 0 10% 0;
+	font-size: 1em;
+	font-weight: 400;
+	opacity: 0.6;
+	font-style: italic;
+}
+
+@media (max-width: 600px) {
+	#timeOfDay {
+		flex-direction: column;
+	}
+
+	.weatherSection {
+		margin: 2% 0;
+		width: auto;
+	}
 }

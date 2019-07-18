@@ -76,6 +76,9 @@ const displayResults = () => {
 	const $resultsDiv = $('<div>').attr('id', 'results');
 	$('#content').append($resultsDiv);
 
+	const $timeOfDay = $('<div>').attr('id', 'timeOfDay');
+	$resultsDiv.append($timeOfDay);
+
 	const $morning = $('<div>')
 		.attr('id', 'morning')
 		.addClass('weatherSection');
@@ -94,7 +97,7 @@ const displayResults = () => {
 	const $eveningH4 = $('<h4>').text('Evening');
 	$evening.append($eveningH4);
 
-	$($resultsDiv).prepend($morning, $afternoon, $evening);
+	$timeOfDay.append($morning, $afternoon, $evening);
 
 	$resultsDiv.addClass('animated zoomIn');
 };
