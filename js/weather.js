@@ -10,8 +10,8 @@ const getWeatherData = (latLngObject, town) => {
 	const lat = latLngObject.lat;
 	const lng = latLngObject.lng;
 
-	// summarizePrecipitation(stamfordData, town);
-	summarizePrecipitation(hawaiiData, town);
+	summarizePrecipitation(stamfordData, town);
+	// summarizePrecipitation(hawaiiData, town);
 
 	// console.log(`lat is ${lat} and type ${typeof lat}`);
 	// console.log(`lng is ${lng} and type ${typeof lng}`);
@@ -25,7 +25,7 @@ const getWeatherData = (latLngObject, town) => {
 	// 	dataType: 'jsonp' // NEED TO SPECIFY THIS FOR IT TO WORK
 	// }).then(data => {
 	// 	console.log(data);
-	// summarizePrecipitation(data, town);
+	// 	summarizePrecipitation(data, town);
 	// });
 };
 
@@ -40,6 +40,8 @@ const getWeatherData = (latLngObject, town) => {
 // Evening defined as 5PM to 10PM
 //=================================================
 const summarizePrecipitation = (darkSkyObject, town) => {
+	// Hide loading animation
+	pageUnload();
 	// SUMMARIZE DATA BETWEEN START AND END TIME
 	const segmentByTime = (startTime, endTime, darkSkyObject) => {
 		let probability = 0;

@@ -30,6 +30,7 @@ const getZipFromIP = ipaddress => {
 		setTimeout(pageUnload, 1000);
 		setTimeout(displayInput, 1000);
 		setTimeout(updateZipCode, 1000, data.zip);
+		setTimeout(triggerWeatherLookup, 1000); // Display results automatically
 	});
 };
 
@@ -39,6 +40,8 @@ const getZipFromIP = ipaddress => {
 //=================================================
 const getLocationInfo = zipcode => {
 	const mapQuestEndpoint = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapQuestAPIKey}&location=${zipcode} United States`;
+
+	pageLoad('Searching for rain...');
 
 	$.ajax({
 		url: mapQuestEndpoint

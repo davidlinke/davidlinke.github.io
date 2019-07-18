@@ -34,9 +34,10 @@ const pageLoad = loadingText => {
 
 //=================================================
 // pageUnload()
-// Removes page loading state
+// Unloads loading state
 //=================================================
 const pageUnload = () => {
+	$('#cloudDiv');
 	$('#cloudDiv').remove();
 };
 
