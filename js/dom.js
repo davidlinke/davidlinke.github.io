@@ -269,27 +269,19 @@ const showRadar = (lat, lng) => {
 
 	$viewRadarButton.append($radarSVG);
 
-	// const $radarModalOuter = $('<div>').attr('id', 'radarModalOuter');
+	const $radarModalOuter = $('<div>').attr('id', 'radarModalOuter');
 
-	// $radar.append($radarModalOuter);
+	$radar.append($radarModalOuter);
 
 	$radar.append($('#radarModalOuter'));
 
 	const $radarModalInner = $('<div>').attr('id', 'radarModalInner');
 
-	const $radarEmbed = $('<script>')
-		.attr('src', radarURL)
-		.attr('type', 'text/javascript');
-	$radarModalInner.append($radarEmbed);
+	// $radarModalInner.append($radarEmbed);
 
-	// $radarModalInner.load(() => {
-	// 	$(this)
-	// 		.contents()
-	// 		.find('body')
-	// 		.append(
-	// 			'<scr' + `ipt type="text/javascript" src=${radarURL}></scr` + 'ipt>'
-	// 		);
-	// });
+	$radarModalInner.load(radarURL, () => {
+		console.log('loaded');
+	});
 
 	// const $script = document.createElement('script');
 	// $script.type = 'text/javascript';

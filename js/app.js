@@ -5,6 +5,8 @@
 pageLoad('Grabbing your location...'); // Show loading state
 getIP(); // Get IP address, start chain of functions
 
+getRadar();
+
 // const $radarButton = $('#viewRadar');
 // // const $radarSVG = $('#radarSVG');
 // const $radarModal = $('#radarModalOuter');

@@ -223,15 +223,16 @@ form p {
 }
 
 #viewRadar {
-	padding-left: 37px;
-	line-height: 37px;
+	padding-left: 20px;
+	/* line-height: 20px; */
 }
 button {
 	width: 180px;
 }
 
 #radarSVG {
-	vertical-align: middle;
+	vertical-align: -4px;
+	padding: 0 4px;
 }
 
 #zipCodeSubmit, button {

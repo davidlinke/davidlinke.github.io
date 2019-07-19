@@ -10,8 +10,8 @@ const getWeatherData = (latLngObject, town) => {
 	const lat = latLngObject.lat;
 	const lng = latLngObject.lng;
 
-	// summarizePrecipitation(stamfordData, town);
-	summarizePrecipitation(stamfordDataMaybeRain, town);
+	summarizePrecipitation(stamfordData, town);
+	// summarizePrecipitation(stamfordDataMaybeRain, town);
 	// summarizePrecipitation(hawaiiData, town);
 
 	// console.log(`lat is ${lat} and type ${typeof lat}`);
@@ -90,4 +90,32 @@ const summarizePrecipitation = (darkSkyObject, town) => {
 	);
 
 	showRadar(darkSkyObject.latitude, darkSkyObject.longitude);
+};
+
+//=================================================
+// getRadar(lat, lng)
+// Gets the radar iFrame from Dark Sky
+//=================================================
+const getRadar = (lat, lng) => {
+	// let radarData = null;
+
+	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
+	const radarURL =
+		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
+
+	// const $radarEmbed = $('<script>')
+	// 	.attr('src', radarURL)
+	// 	.attr('type', 'text/javascript');
+
+	// $.ajax({
+	// 	beforeSend: request => {
+	// 		request.setRequestHeader('Access-Control-Allow-Origin', '*');
+	// 	},
+	// 	url: radarURL,
+	// 	dataType: 'html'
+	// }).then(data => {
+	// 	console.log(data);
+	// 	$('#main').append(data);
+	// 	// return radarData;
+	// });
 };
