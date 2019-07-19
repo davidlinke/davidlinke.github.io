@@ -15,6 +15,7 @@ A responsively designed utilitarian website that quickly lets you know if you sh
 - Displays rain probabilities broken down by morning, afternoon, and evening
 - Displays current precipitation radar
 - Whimsical animations that change based on the precipitiation probability
+- Gracefully handles API timeouts / errors
 
 ## Technologies
 
@@ -32,6 +33,5 @@ A responsively designed utilitarian website that quickly lets you know if you sh
 
 ## Future Improvements
 
-- Handle API timeouts / non-responses gracefully
 - Show additional weather information when hovering over or clicking morning, afternoon, and evening boxes
 - Graphically show precipitation percent in morning, afternoon, and evening boxes similar to a bar graph

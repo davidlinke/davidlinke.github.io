@@ -24,10 +24,15 @@ const getWeatherData = (latLngObject, town) => {
 
 	$.ajax({
 		url: darkSkyEndpoint,
-		dataType: 'jsonp' // NEED TO SPECIFY THIS FOR IT TO WORK
-	}).then(data => {
-		// console.log(data);
-		summarizePrecipitation(data, town);
+		dataType: 'jsonp', // NEED TO SPECIFY THIS FOR IT TO WORK
+		success: data => {
+			// console.log(data);
+			summarizePrecipitation(data, town);
+		},
+		error: (request, status, err) => {
+			// console.log('Error getting weather: ' + request + status + err);
+			alert('Error getting weather');
+		}
 	});
 };
 
