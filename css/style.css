@@ -341,13 +341,17 @@ h6 {
 		transform: translateX(-50%);
 		-webkit-transform: translateX(-50%);
 		-moz-transform: translateX(-50%);
-		bottom: 0;
+		bottom: 2.5vh;
 		z-index: 2;
+	}
+
+	#radarModalOuter {
+		background-color: rgba(255, 255, 255, 0.9);
 	}
 
 	/* Make Radar Full Width */
 	#radarModalInner {
-		height: 100vh;
+		height: 80vh;
 		width: 100vw;
 	}
 }
