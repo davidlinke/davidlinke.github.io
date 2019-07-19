@@ -2,7 +2,7 @@
 
 A utilitarian website designed to quickly let you know if you should grab your umbrella on your way out today.
 
-![screenshot of page](images/screenshot.png 'Screenshot of page')
+![screenshot of page](https://github.com/davidlinke/davidlinke.github.io/blob/master/images/home.png)
 
 ## Technologies
 
