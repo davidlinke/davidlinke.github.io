@@ -2,8 +2,8 @@
 // app.js
 //=================================================
 
-pageLoad('Grabbing your location...'); // Show loading state
-getIP(); // Get IP address, start chain of functions
+// pageLoad('Grabbing your location...'); // Show loading state
+// getIP(); // Get IP address, start chain of functions
 
 //=================================================
 // checkForPreviousVisit()
@@ -17,3 +17,5 @@ const checkForPreviousVisit = () => {
 		getIP(); // Get IP address, start chain of functions
 	}
 };
+
+checkForPreviousVisit();
