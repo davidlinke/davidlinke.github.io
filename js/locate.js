@@ -53,27 +53,31 @@ const getZipFromIP = ipaddress => {
 // Gets the latitude, longitude, and town from a zipcode
 //=================================================
 const getLocationInfo = zipcode => {
-	const mapQuestEndpoint = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapQuestAPIKey}&location=${zipcode} United States`;
+	if (!zipcode || zipcode.length !== 5) {
+		alert('Enter a valid zipcode.');
+	} else {
+		const mapQuestEndpoint = `https://open.mapquestapi.com/geocoding/v1/address?key=${mapQuestAPIKey}&location=${zipcode} United States`;
 
-	pageLoad('Searching for rain...');
+		pageLoad('Searching for rain...');
 
-	$.ajax({
-		url: mapQuestEndpoint,
-		timeout: 2000,
-		success: data => {
-			const latLngObject = data.results[0].locations[0].latLng;
-			const town = data.results[0].locations[0].adminArea5;
-			// console.log(
-			// 	`Location is ${latLngObject.lat}, ${latLngObject.lng} and town is ${town}`
-			// );
-			getWeatherData(latLngObject, town);
-		},
-		error: (request, status, err) => {
-			// console.log('Error getting latitude + longitude: ' + request + status + err);
-			alert('Error getting latitude + longitude');
-			pageUnload();
-		}
-	});
+		$.ajax({
+			url: mapQuestEndpoint,
+			timeout: 2000,
+			success: data => {
+				const latLngObject = data.results[0].locations[0].latLng;
+				const town = data.results[0].locations[0].adminArea5;
+				// console.log(
+				// 	`Location is ${latLngObject.lat}, ${latLngObject.lng} and town is ${town}`
+				// );
+				getWeatherData(latLngObject, town);
+			},
+			error: (request, status, err) => {
+				// console.log('Error getting latitude + longitude: ' + request + status + err);
+				alert('Error getting latitude + longitude');
+				pageUnload();
+			}
+		});
+	}
 };
 
 //=================================================
