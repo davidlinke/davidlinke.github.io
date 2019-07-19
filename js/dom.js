@@ -251,7 +251,7 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 const showRadar = (lat, lng) => {
 	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
 	const radarURL =
-		'https://cors.io/?https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
+		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
 
 	const $radar = $('<div>');
 
@@ -273,29 +273,39 @@ const showRadar = (lat, lng) => {
 
 	$radar.append($radarModalOuter);
 
-	$radar.append($('#radarModalOuter'));
-
 	const $radarModalInner = $('<div>').attr('id', 'radarModalInner');
 
-	// $radarModalInner.append($radarEmbed);
+	// $.getScript(radarURL, (data, status, statusNum) => {
+	// 	console.log(data);
+	// 	$('#radarModalInner').append(data);
+	// 	console.log(`Radar script load status: ${status}`);
+	// 	console.log(statusNum);
+	// 	console.log(`Radar script load status code: ${statusNum}`);
 
-	$radarModalInner.load(radarURL, () => {
-		console.log('loaded');
+	// 	// const $closeRadarButton = $('<button>')
+	// 	// 	.attr('type', 'button')
+	// 	// 	.attr('id', 'closeRadar')
+	// 	// 	.text('Close Radar');
+
+	// 	// $radarModalInner.append($closeRadarButton);
+	// });
+
+	$.getScript(radarURL).done((data, status, statusNum) => {
+		console.log(data);
+		$('#radarModalInner').append(data);
+		$('#main').append(data);
+		console.log(`Radar script load status: ${status}`);
+		console.log(statusNum);
+		console.log(`Radar script load status code: ${statusNum.status}`);
+
+		// const $closeRadarButton = $('<button>')
+		// 	.attr('type', 'button')
+		// 	.attr('id', 'closeRadar')
+		// 	.text('Close Radar');
+
+		// $radarModalInner.append($closeRadarButton);
 	});
-
-	// const $script = document.createElement('script');
-	// $script.type = 'text/javascript';
-	// $script.src = radarURL;
-	// $radarModalInner.append($script);
-
-	// $radarModalOuter.append($radarModalInner);
-
-	const $closeRadarButton = $('<button>')
-		.attr('type', 'button')
-		.attr('id', 'closeRadar')
-		.text('Close Radar');
-
-	$radarModalInner.append($closeRadarButton);
+	$radarModalOuter.append($radarModalInner);
 
 	$('#content').append($radar);
 
@@ -314,7 +324,7 @@ const radarListeners = () => {
 	const $radarCloseButton = $('#closeRadar');
 
 	$radarButton.on('click', () => {
-		console.log('radar button clicked');
+		// console.log('radar button clicked');
 		$radarModal.css('display', 'block');
 	});
 
@@ -325,7 +335,7 @@ const radarListeners = () => {
 
 	// Need button for mobile users
 	$radarCloseButton.on('click', () => {
-		console.log('close radar button clicked');
+		// console.log('close radar button clicked');
 		$radarModal.css('display', 'none');
 	});
 
@@ -336,7 +346,7 @@ const radarListeners = () => {
 			event.target.id != 'radarModalInner' &&
 			event.target.id != 'viewRadar'
 		) {
-			console.log('clicked outside of radar');
+			// console.log('clicked outside of radar');
 			$radarModal.css('display', 'none');
 		}
 	});
