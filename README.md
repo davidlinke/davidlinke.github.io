@@ -1,6 +1,6 @@
 # Grab your umbrella?
 
-A utilitarian website designed to quickly let you know if you should grab your umbrella on your way out today.
+A responsively designed utilitarian website that quickly lets you know if you should grab your umbrella on your way out today.
 
 ![screenshot of page](https://github.com/davidlinke/davidlinke.github.io/blob/master/images/home.png 'Screenshot of page')
 
@@ -9,7 +9,7 @@ A utilitarian website designed to quickly let you know if you should grab your u
 - Automatically gets a users location from their IP address
 - User can manually enter their location
 - Stores location in localStorage so repeat visits to the site use the same location
-- Displays whether one should bring and umbrella with them today based on rain probabilities
+- Displays whether one should bring an umbrella with them today based on the rain probability
 - Displays rain probabilities broken down by morning, afternoon, and evening
 - Displays current precipitation radar
 - Whimsical animations that change based on the precipitiation probability
