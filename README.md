@@ -27,3 +27,9 @@ A utilitarian website designed to quickly let you know if you should grab your u
 - [Mapquest](https://www.mapquest.com/) - To get latitude and longitude from a general location
 - [ipapi](https://ipapi.com/) - To get a users zip code from their IP address
 - [ipify](https://www.ipify.org/) - To get a users IP address
+
+## Future Improvements
+
+- Handle API timeouts / non-responses gracefully
+- Show additional weather information when hovering over or clicking morning, afternoon, and evening boxes
+- Graphically show precipitation percent in morning, afternoon, and evening boxes similar to a bar graph
