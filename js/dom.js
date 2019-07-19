@@ -120,6 +120,7 @@ const zipCodeListener = () => {
 const triggerWeatherLookup = () => {
 	// Clear Existing Info
 	$('#results').remove();
+	$('#radarDiv').remove();
 	$('#main').removeClass('mainRain');
 	// $('.uprightUmbrella').removeClass('fallenUmbrella');
 	$('#umbrella').remove();
@@ -251,11 +252,15 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 // Generates and displays radar modal
 //=================================================
 const showRadar = (lat, lng) => {
+	console.log(`In showRadar function, lat is ${lat}, lng is ${lng}`);
 	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
-	const radarURL =
-		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar/';
+	// const radarURL =
+	// 	'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar/';
+	const radarURL = `https://maps.darksky.net/@radar,${lat},${lng},8?domain="+encodeURIComponent(window.location.href)+"&auth=1563553294_49853b3def2fdfe0278cf996052f1578&embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
+	// const radarURL =
+	// 	'https://maps.darksky.net/@radar,41.145871,-73.239481,8?domain="+encodeURIComponent(window.location.href)+"&auth=1563553294_49853b3def2fdfe0278cf996052f1578&embed=true&timeControl=false&fieldControl=false&defaultField=radar';
 
-	const $radar = $('<div>');
+	const $radar = $('<div>').attr('id', 'radarDiv');
 
 	const $viewRadarButton = $('<button>')
 		.attr('type', 'button')
@@ -275,9 +280,9 @@ const showRadar = (lat, lng) => {
 
 	$radar.append($radarModalOuter);
 
-	// const $radarModalInner = $('<iframe>')
-	// 	.attr('id', 'radarModalInner')
-	// 	.attr('src', radarURL);
+	const $radarModalInner = $('<iframe>')
+		.attr('id', 'radarModalInner')
+		.attr('src', radarURL);
 
 	// const $radarScript = $('<script>')
 	// 	.attr('src', radarURL)
@@ -336,9 +341,9 @@ const showRadar = (lat, lng) => {
 	// 	.attr('id', 'closeRadar')
 	// 	.text('Close Radar');
 
-	// $radarModalInner.append($closeRadarButton);
+	// $radarModalOuter.append($closeRadarButton);
 
-	// $radarModalOuter.append($radarModalInner);
+	$radarModalOuter.append($radarModalInner);
 
 	$('#content').append($radar);
 
