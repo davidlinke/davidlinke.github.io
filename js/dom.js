@@ -51,9 +51,6 @@ const displayInput = () => {
 		.attr('id', 'zipForm');
 	$('#content').append($form);
 
-	// const $label = $('<p>').text('Zip Code');
-	// $form.append($label);
-
 	const $input = $('<input>')
 		.attr('type', 'text')
 		.attr('id', 'zipCodeInput');
@@ -122,7 +119,6 @@ const triggerWeatherLookup = () => {
 	$('#results').remove();
 	$('#radarDiv').remove();
 	$('#main').removeClass('mainRain');
-	// $('.uprightUmbrella').removeClass('fallenUmbrella');
 	$('#umbrella').remove();
 	const $freshUmbrella = $('<object>')
 		.attr('type', 'image/svg+xml')
@@ -144,7 +140,6 @@ const triggerWeatherLookup = () => {
 // Animates page elements if rain is predicted
 //=================================================
 const animateOnRain = () => {
-	// Swap umbrella graphic with one with class that opens
 	const $umbrellaOpen = $('<object>')
 		.attr('type', 'image/svg+xml')
 		.attr('data', 'images/umbrellaOpen.svg')
@@ -161,7 +156,6 @@ const animateOnRain = () => {
 // Animates page elements if rain is maybe predicted
 //=================================================
 const animateOnMaybeRain = () => {
-	// Swap umbrella graphic with one with class that opens
 	const $umbrellaRepeat = $('<object>')
 		.attr('type', 'image/svg+xml')
 		.attr('data', 'images/umbrellaRepeat.svg')
@@ -252,13 +246,9 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 // Generates and displays radar modal
 //=================================================
 const showRadar = (lat, lng) => {
-	console.log(`In showRadar function, lat is ${lat}, lng is ${lng}`);
-	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
-	// const radarURL =
-	// 	'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar/';
+	// console.log(`In showRadar function, lat is ${lat}, lng is ${lng}`);
+	// const embedRadarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
 	const radarURL = `https://maps.darksky.net/@radar,${lat},${lng},8?domain="+encodeURIComponent(window.location.href)+"&auth=1563553294_49853b3def2fdfe0278cf996052f1578&embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
-	// const radarURL =
-	// 	'https://maps.darksky.net/@radar,41.145871,-73.239481,8?domain="+encodeURIComponent(window.location.href)+"&auth=1563553294_49853b3def2fdfe0278cf996052f1578&embed=true&timeControl=false&fieldControl=false&defaultField=radar';
 
 	const $radar = $('<div>').attr('id', 'radarDiv');
 
@@ -283,58 +273,6 @@ const showRadar = (lat, lng) => {
 	const $radarModalInner = $('<iframe>')
 		.attr('id', 'radarModalInner')
 		.attr('src', radarURL);
-
-	// const $radarScript = $('<script>')
-	// 	.attr('src', radarURL)
-	// 	.attr('type', 'text/javascript');
-
-	// $radarModalInner.append($radarScript);
-
-	// jQuery.ajaxSetup({
-	// 	cache: true
-	// });
-
-	// $.getScript(radarURL, (data, status, statusNum) => {
-	// 	console.log(data);
-	// 	$data = $(data);
-	// 	console.log($data);
-	// 	// $data.filter('#map-embed-iframe').appendTo('#radarModalInner');
-	// 	// $('#radarModalInner').append(data);
-	// 	console.log(`Radar script load status: ${status}`);
-	// 	console.log(statusNum);
-	// 	console.log(`Radar script load status code: ${statusNum}`);
-
-	// 	// const $closeRadarButton = $('<button>')
-	// 	// 	.attr('type', 'button')
-	// 	// 	.attr('id', 'closeRadar')
-	// 	// 	.text('Close Radar');
-
-	// 	// $radarModalInner.append($closeRadarButton);
-	// });
-
-	// $.ajax({
-	// 	type: 'GET',
-	// 	url: radarURL,
-	// 	dataType: 'script',
-	// 	cache: true
-	// }).then(data => {
-	// 	$data = $(data);
-	// 	console.log($data);
-	// 	$data.find('#map-embed-iframe').appendTo('#radarModalInner');
-	// 	console.log('script loaded');
-	// 	// console.log(data);
-	// 	// $('#radarModalInner').append(data);
-	// 	// $('#main').append(data);
-	// });
-
-	// $.getScript(radarURL).done((data, status, statusNum) => {
-	// 	console.log(data);
-	// 	$('#radarModalInner').append(data);
-	// 	$('#main').append(data);
-	// 	console.log(`Radar script load status: ${status}`);
-	// 	console.log(statusNum);
-	// console.log(`Radar script load status code: ${statusNum.status}`);
-	// });
 
 	const $closeRadarButton = $('<button>')
 		.attr('type', 'button')
@@ -366,20 +304,15 @@ const radarListeners = () => {
 		$radarModal.css('display', 'block');
 	});
 
-	// $radarSVG.on('click', () => {
-	// 	console.log('radar svg clicked');
-	// 	$radarModal.css('display', 'block');
-	// });
-
 	// Need button for mobile users
 	$radarCloseButton.on('click', () => {
-		console.log('close radar button clicked');
+		// console.log('close radar button clicked');
 		$radarModal.css('display', 'none');
 	});
 
 	// If clicking outside of the modal and not on the view radar button, close the modal
 	$('body').on('click', event => {
-		console.log(event);
+		// console.log(event);
 		if (
 			event.target.id != 'radarModalInner' &&
 			event.target.id != 'viewRadar'

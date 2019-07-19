@@ -10,24 +10,25 @@ const getWeatherData = (latLngObject, town) => {
 	const lat = latLngObject.lat;
 	const lng = latLngObject.lng;
 
-	summarizePrecipitation(stamfordData, town);
+	// TEST DATA, UNCOMMENT ONE AND COMMENT OTHER CODE BELOW TO USE
+	// summarizePrecipitation(stamfordData, town);
 	// summarizePrecipitation(stamfordDataMaybeRain, town);
 	// summarizePrecipitation(hawaiiData, town);
 
 	// console.log(`lat is ${lat} and type ${typeof lat}`);
 	// console.log(`lng is ${lng} and type ${typeof lng}`);
 
-	// const currentTime = Math.round(new Date().getTime() / 1000); // get unix time
+	const currentTime = Math.round(new Date().getTime() / 1000); // get unix time
 
-	// const darkSkyEndpoint = `https://api.darksky.net/forecast/${darkSkyAPIKey}/${lat},${lng},${currentTime}?exclude=currently,flags,minutely,daily,alerts`;
+	const darkSkyEndpoint = `https://api.darksky.net/forecast/${darkSkyAPIKey}/${lat},${lng},${currentTime}?exclude=currently,flags,minutely,daily,alerts`;
 
-	// $.ajax({
-	// 	url: darkSkyEndpoint,
-	// 	dataType: 'jsonp' // NEED TO SPECIFY THIS FOR IT TO WORK
-	// }).then(data => {
-	// 	console.log(data);
-	// 	summarizePrecipitation(data, town);
-	// });
+	$.ajax({
+		url: darkSkyEndpoint,
+		dataType: 'jsonp' // NEED TO SPECIFY THIS FOR IT TO WORK
+	}).then(data => {
+		// console.log(data);
+		summarizePrecipitation(data, town);
+	});
 };
 
 // precipProbability: The probability of precipitation occurring, between 0 and 1, inclusive.
@@ -70,9 +71,9 @@ const summarizePrecipitation = (darkSkyObject, town) => {
 	// EVENING
 	const eveningProbability = segmentByTime(16, 20, darkSkyObject);
 
-	console.log(
-		`Morning chance of rain is ${morningProbability}. Afternoon chance of rain is ${afternoonProbability}. Evening chance of rain is ${eveningProbability}`
-	);
+	// console.log(
+	// 	`Morning chance of rain is ${morningProbability}. Afternoon chance of rain is ${afternoonProbability}. Evening chance of rain is ${eveningProbability}`
+	// );
 
 	displayResults();
 

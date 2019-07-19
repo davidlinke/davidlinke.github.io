@@ -10,7 +10,7 @@ const getIP = () => {
 	$.ajax({
 		url: 'https://api.ipify.org?format=json'
 	}).then(data => {
-		console.log(`IP address is: ${data.ip}`);
+		// console.log(`IP address is: ${data.ip}`);
 		// Call getZipFromIP(ipaddress) once IP address is found
 		getZipFromIP(data.ip);
 	});
@@ -25,7 +25,7 @@ const getZipFromIP = ipaddress => {
 	$.ajax({
 		url: ipEndpoint
 	}).then(data => {
-		console.log(`Zip code from IP address is: ${data.zip}`);
+		// console.log(`Zip code from IP address is: ${data.zip}`);
 		// Unload loading animation and update zip code in UI. Timeout for demo purposes only to show off animation.
 		setTimeout(pageUnload, 1000);
 		setTimeout(displayInput, 1000);
@@ -46,14 +46,11 @@ const getLocationInfo = zipcode => {
 	$.ajax({
 		url: mapQuestEndpoint
 	}).then(data => {
-		// console.log(data.results[0].locations[0]);
-		// console.log(data.results[0].locations[0].adminArea5);
-		// console.log(data.results[0].locations[0].latLng);
 		const latLngObject = data.results[0].locations[0].latLng;
 		const town = data.results[0].locations[0].adminArea5;
-		console.log(
-			`Location is ${latLngObject.lat}, ${latLngObject.lng} and town is ${town}`
-		);
+		// console.log(
+		// 	`Location is ${latLngObject.lat}, ${latLngObject.lng} and town is ${town}`
+		// );
 		getWeatherData(latLngObject, town);
 	});
 };
@@ -63,6 +60,6 @@ const getLocationInfo = zipcode => {
 // Stores found or entered location in localStorage
 //=================================================
 const storeLocation = zip => {
-	console.log(`Storing location ${zip}`);
+	// console.log(`Storing location ${zip}`);
 	localStorage.setItem('location', zip);
 };
