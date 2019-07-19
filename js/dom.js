@@ -336,12 +336,12 @@ const showRadar = (lat, lng) => {
 	// console.log(`Radar script load status code: ${statusNum.status}`);
 	// });
 
-	// const $closeRadarButton = $('<button>')
-	// 	.attr('type', 'button')
-	// 	.attr('id', 'closeRadar')
-	// 	.text('Close Radar');
+	const $closeRadarButton = $('<button>')
+		.attr('type', 'button')
+		.attr('id', 'closeRadar')
+		.text('Close Radar');
 
-	// $radarModalOuter.append($closeRadarButton);
+	$radarModalOuter.append($closeRadarButton);
 
 	$radarModalOuter.append($radarModalInner);
 
@@ -373,7 +373,7 @@ const radarListeners = () => {
 
 	// Need button for mobile users
 	$radarCloseButton.on('click', () => {
-		// console.log('close radar button clicked');
+		console.log('close radar button clicked');
 		$radarModal.css('display', 'none');
 	});
 
