@@ -57,3 +57,12 @@ const getLocationInfo = zipcode => {
 		getWeatherData(latLngObject, town);
 	});
 };
+
+//=================================================
+// storeLocation()
+// Stores found or entered location in localStorage
+//=================================================
+const storeLocation = zip => {
+	console.log(`Storing location ${zip}`);
+	localStorage.setItem('location', zip);
+};

@@ -133,6 +133,8 @@ const triggerWeatherLookup = () => {
 
 	let zipcode = $('#zipCodeInput').val();
 
+	storeLocation(zipcode);
+
 	getLocationInfo(zipcode);
 };
 
@@ -251,7 +253,7 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 const showRadar = (lat, lng) => {
 	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
 	const radarURL =
-		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
+		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar/';
 
 	const $radar = $('<div>');
 
@@ -273,11 +275,26 @@ const showRadar = (lat, lng) => {
 
 	$radar.append($radarModalOuter);
 
-	const $radarModalInner = $('<div>').attr('id', 'radarModalInner');
+	// const $radarModalInner = $('<iframe>')
+	// 	.attr('id', 'radarModalInner')
+	// 	.attr('src', radarURL);
+
+	// const $radarScript = $('<script>')
+	// 	.attr('src', radarURL)
+	// 	.attr('type', 'text/javascript');
+
+	// $radarModalInner.append($radarScript);
+
+	// jQuery.ajaxSetup({
+	// 	cache: true
+	// });
 
 	// $.getScript(radarURL, (data, status, statusNum) => {
 	// 	console.log(data);
-	// 	$('#radarModalInner').append(data);
+	// 	$data = $(data);
+	// 	console.log($data);
+	// 	// $data.filter('#map-embed-iframe').appendTo('#radarModalInner');
+	// 	// $('#radarModalInner').append(data);
 	// 	console.log(`Radar script load status: ${status}`);
 	// 	console.log(statusNum);
 	// 	console.log(`Radar script load status code: ${statusNum}`);
@@ -290,22 +307,38 @@ const showRadar = (lat, lng) => {
 	// 	// $radarModalInner.append($closeRadarButton);
 	// });
 
-	$.getScript(radarURL).done((data, status, statusNum) => {
-		console.log(data);
-		$('#radarModalInner').append(data);
-		$('#main').append(data);
-		console.log(`Radar script load status: ${status}`);
-		console.log(statusNum);
-		console.log(`Radar script load status code: ${statusNum.status}`);
+	// $.ajax({
+	// 	type: 'GET',
+	// 	url: radarURL,
+	// 	dataType: 'script',
+	// 	cache: true
+	// }).then(data => {
+	// 	$data = $(data);
+	// 	console.log($data);
+	// 	$data.find('#map-embed-iframe').appendTo('#radarModalInner');
+	// 	console.log('script loaded');
+	// 	// console.log(data);
+	// 	// $('#radarModalInner').append(data);
+	// 	// $('#main').append(data);
+	// });
 
-		// const $closeRadarButton = $('<button>')
-		// 	.attr('type', 'button')
-		// 	.attr('id', 'closeRadar')
-		// 	.text('Close Radar');
+	// $.getScript(radarURL).done((data, status, statusNum) => {
+	// 	console.log(data);
+	// 	$('#radarModalInner').append(data);
+	// 	$('#main').append(data);
+	// 	console.log(`Radar script load status: ${status}`);
+	// 	console.log(statusNum);
+	// console.log(`Radar script load status code: ${statusNum.status}`);
+	// });
 
-		// $radarModalInner.append($closeRadarButton);
-	});
-	$radarModalOuter.append($radarModalInner);
+	// const $closeRadarButton = $('<button>')
+	// 	.attr('type', 'button')
+	// 	.attr('id', 'closeRadar')
+	// 	.text('Close Radar');
+
+	// $radarModalInner.append($closeRadarButton);
+
+	// $radarModalOuter.append($radarModalInner);
 
 	$('#content').append($radar);
 
