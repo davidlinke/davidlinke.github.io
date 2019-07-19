@@ -251,7 +251,7 @@ const mainStatus = (morningChance, afternoonChance, eveningChance, town) => {
 const showRadar = (lat, lng) => {
 	// const radarURL = `https://darksky.net/map-embed/@radar,${lat},${lng},8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar`;
 	const radarURL =
-		'https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
+		'http://cors.io/?https://darksky.net/map-embed/@radar,41.145871,-73.239481,8.js?embed=true&timeControl=false&fieldControl=false&defaultField=radar';
 
 	const $radar = $('<div>');
 
